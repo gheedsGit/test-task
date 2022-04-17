@@ -1,0 +1,32 @@
+@import "../../../assets/styles/variables";
+
+.header {
+  background-color: $backgroundColorSurface;
+
+  &__container {
+    height: 60px;
+    margin: auto;
+    max-width: $contentContainerWidth;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media (max-width: $md1) {
+      max-width: 904px;
+    }
+
+    @media (max-width: $md2) {
+      max-width: 704px;
+    }
+
+    @media (max-width: $md3) {
+      max-width: 328px;
+    }
+  }
+
+  &__btn-container {
+    width: 210px;
+    display: flex;
+    justify-content: space-between;
+  }
+}

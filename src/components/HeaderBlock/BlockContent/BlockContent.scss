@@ -1,0 +1,51 @@
+@import "../../../assets/styles/variables";
+
+.content-container {
+  background: url("../../../assets/img/Background.jpg") no-repeat center top /
+    cover;
+  max-width: $contentContainerWidth;
+  height: 650px;
+  display: flex;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.items {
+  width: 380px;
+  height: 323px;
+  text-align: center;
+
+  &__heading {
+    margin-bottom: 21px;
+  }
+
+  &__text {
+    margin-bottom: 32px;
+  }
+}
+
+@media (max-width: $md1) {
+  .content-container {
+    width: 1024px;
+  }
+}
+
+@media (max-width: $md2) {
+  .content-container {
+    width: 768px;
+    height: 500px;
+  }
+}
+
+@media (max-width: $md3) {
+  .content-container {
+    width: 360px;
+    height: 500px;
+  }
+
+  .items {
+    width: 328px;
+    height: 389px;
+  }
+}
