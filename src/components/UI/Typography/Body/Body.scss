@@ -1,0 +1,14 @@
+@import "../../../../assets/styles/variables";
+
+.text-body {
+  font-size: $fontSizeBody;
+  line-height: $lineHeightBody;
+}
+
+.normal {
+  color: $black;
+}
+
+.inverted {
+  color: $backgroundColorSurface;
+}

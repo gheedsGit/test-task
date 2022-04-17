@@ -1,0 +1,14 @@
+@import "../../../../assets/styles/variables";
+
+.heading {
+  font-size: $fontSizeHeading;
+  line-height: $lineHeightHeading;
+}
+
+.normal {
+  color: $black;
+}
+
+.inverted {
+  color: $backgroundColorSurface;
+}
