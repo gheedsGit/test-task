@@ -4,10 +4,10 @@ import BlockContent from "./BlockContent";
 
 const HeaderBlock = () => {
   return (
-    <div>
+    <>
       <Header />
       <BlockContent />
-    </div>
+    </>
   );
 };
 

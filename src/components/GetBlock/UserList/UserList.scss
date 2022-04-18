@@ -1,0 +1,28 @@
+@import "../../../assets/styles/variables";
+
+.container {
+  max-width: $contentContainerWidth;
+  margin: auto;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  margin-bottom: 21px;
+}
+
+@media (max-width: $md1) {
+  .container {
+    max-width: 904px;
+  }
+}
+
+@media (max-width: $md2) {
+  .container {
+    max-width: 704px;
+  }
+}
+
+@media (max-width: $md3) {
+  .container {
+    max-width: 328px;
+  }
+}

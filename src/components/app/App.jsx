@@ -1,8 +1,13 @@
+import GetBlock from "../GetBlock";
 import HeaderBlock from "../HeaderBlock";
-import Button from "../UI/Button";
 
 function App() {
-  return <div className="App"><HeaderBlock /></div>;
+  return (
+    <div className="App">
+      <HeaderBlock />
+      <GetBlock />
+    </div>
+  );
 }
 
 export default App;
