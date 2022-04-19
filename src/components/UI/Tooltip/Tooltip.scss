@@ -1,0 +1,15 @@
+@import "../../../assets/styles/variables";
+
+.tooltip-wrapper {
+  display: inline-block;
+  max-width: fit-content;
+  max-height: fit-content;
+  background-color: $black;
+  color: $backgroundColorSurface;
+  text-align: center;
+  border-radius: 4px;
+  padding: 3px 16px;
+  position: absolute;
+  z-index: 1;
+  top: 47px;
+}
