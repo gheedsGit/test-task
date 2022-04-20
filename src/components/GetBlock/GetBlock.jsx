@@ -44,7 +44,7 @@ const GetBlock = () => {
   }, [userData, currentPage]);
 
   return (
-    <div className="get-block">
+    <div id="getRoute" className="get-block">
       <div className="block-container">
         <div className="heading-container">
           <Heading>Working with GET request</Heading>

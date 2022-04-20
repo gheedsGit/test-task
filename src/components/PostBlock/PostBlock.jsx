@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { API_BASE } from "../../apiQueryData";
 import axios from "axios";
 import Form from "./Form";
+import Heading from "../UI/Typography/Heading";
+import "./PostBlock.scss";
 
 const PostBlock = () => {
   const [positions, setPositions] = useState([]);
@@ -16,10 +18,12 @@ const PostBlock = () => {
   }, []);
 
   return (
-    <div>
+    <section id="postRoute" className="post-block">
+      <div className="post-block__heading">
+        <Heading>Working with POST request</Heading>
+      </div>
       <Form positions={positions} />
-      
-    </div>
+    </section>
   );
 };
 

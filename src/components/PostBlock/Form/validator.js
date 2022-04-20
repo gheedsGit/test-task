@@ -7,7 +7,7 @@ export const validationSchema = Yup.object({
     .min(2, "Must be 2 characters or more")
     .max(15, "Must be 15 characters or less")
     .required("Required"),
-  email: Yup.string().email("Invalid email address").required("Required"),
+  email: Yup.string().email("Invalid email address format").required("Required"),
   phone: Yup.string()
     .required("Required")
     .matches(/^([\+]{0,1}380([0-9]{9})$)/, "Phone number is not valid"),

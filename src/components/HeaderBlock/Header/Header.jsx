@@ -11,8 +11,12 @@ const Header = () => {
           <img src={Logo} alt="test task logo" />
         </div>
         <div className="header__btn-container">
-          <Button>Users</Button>
-          <Button>Sign Up</Button>
+          <a href="#getRoute">
+            <Button>Users</Button>
+          </a>
+          <a href="#postRoute">
+            <Button>Sign Up</Button>
+          </a>
         </div>
       </div>
     </header>

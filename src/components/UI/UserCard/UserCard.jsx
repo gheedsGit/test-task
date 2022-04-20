@@ -16,7 +16,7 @@ const UserCard = ({ user }) => {
             <span>{name}</span>
           </Tooltip>
         </div>
-        <div className="user-container__info">
+        <div className="card-container__info">
           <div className="info_item">
             <Tooltip tooltipText={position}>
               <span>{position}</span>
