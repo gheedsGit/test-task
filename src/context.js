@@ -1,5 +1,5 @@
 import React from "react";
 
-const OffsetContext = React.createContext();
+const PageStateContext = React.createContext();
 
-export default OffsetContext;
+export default PageStateContext;

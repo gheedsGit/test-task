@@ -1,20 +1,34 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./Form.scss";
+
 import { validationSchema } from "./validator";
 import { useFormik } from "formik";
+
 import Button from "../../UI/Button";
 import Body from "../../UI/Typography/Body";
+import PageStateContext from "../../../context";
+
 import axios from "axios";
-import OffsetContext from "../../../context";
 import { API_POST_BASE, API_POST_TOKEN, API_BASE } from "../../../apiQueryData";
+import Preloader from "../../UI/Preloader";
 
 const Form = ({ setFormSuccess }) => {
   const [positions, setPositions] = useState([]);
-  const { setOffset } = useContext(OffsetContext);
+  const [loading, setLoading] = useState(true);
+
+  const { setOffset } = useContext(PageStateContext);
 
   const getPositions = async () => {
-    const response = await axios.get(`${API_BASE}/api/v1/positions`);
-    setPositions(response.data.positions);
+    try {
+      const response = await axios.get(`${API_BASE}/api/v1/positions`);
+
+      if (response.data.success) {
+        setPositions(response.data.positions);
+        setLoading(false);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
@@ -110,28 +124,32 @@ const Form = ({ setFormSuccess }) => {
               <div className="error">{formik.errors.phone}</div>
             ) : null}
           </div>
-          <div className="form-item__position">
-            <div className="position-invite">
-              <Body type="normal">Select your position</Body>
-            </div>
-            {positions.map((position) => (
-              <div className="radio-item" key={position.id}>
-                <input
-                  type="radio"
-                  value={position.id}
-                  onChange={formik.handleChange}
-                  name="position_id"
-                />
-                <label className="radio-label" htmlFor={position.name}>
-                  {position.name}
-                </label>
-                <br></br>
+          {loading ? (
+            <Preloader />
+          ) : (
+            <div className="form-item__position">
+              <div className="position-invite">
+                <Body type="normal">Select your position</Body>
               </div>
-            ))}
-            {formik.touched.position_id && formik.errors.position_id ? (
-              <div className="error">{formik.errors.position_id}</div>
-            ) : null}
-          </div>
+              {positions.map((position) => (
+                <div className="radio-item" key={position.id}>
+                  <input
+                    type="radio"
+                    value={position.id}
+                    onChange={formik.handleChange}
+                    name="position_id"
+                  />
+                  <label className="radio-label" htmlFor={position.name}>
+                    {position.name}
+                  </label>
+                  <br></br>
+                </div>
+              ))}
+              {formik.touched.position_id && formik.errors.position_id ? (
+                <div className="error">{formik.errors.position_id}</div>
+              ) : null}
+            </div>
+          )}
           <div className="form-item__photo">
             <button>Upload</button>
             <input
