@@ -13,7 +13,7 @@ import "./GetBlock.scss";
 
 const GetBlock = () => {
   const [userData, setUserData] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1); // may be used for unexpandable user list
   const [totalPages, setTotalPages] = useState(2);
   const [isHiding, setIsHiding] = useState(false);
   const [loading, setLoading] = useState(false);

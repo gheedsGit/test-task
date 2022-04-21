@@ -15,7 +15,7 @@ const Header = () => {
             <Button>Users</Button>
           </a>
           <a href="#postRoute">
-            <Button>Sign Up</Button>
+            <Button>Sign up</Button>
           </a>
         </div>
       </div>

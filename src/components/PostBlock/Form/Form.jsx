@@ -167,7 +167,7 @@ const Form = ({ setFormSuccess }) => {
           </div>
           <div className="form-item__submit">
             <Button disabled={!(formik.isValid && formik.dirty)} type="submit">
-              Submit
+              Sign up
             </Button>
           </div>
         </div>
