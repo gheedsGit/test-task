@@ -1,28 +1,28 @@
-import React, { useState, useEffect } from "react";
-import { API_BASE } from "../../apiQueryData";
-import axios from "axios";
+import React, { useState } from "react";
+
 import Form from "./Form";
 import Heading from "../UI/Typography/Heading";
+
+import succesImage from "../../assets/img/success-image.svg";
 import "./PostBlock.scss";
 
 const PostBlock = () => {
-  const [positions, setPositions] = useState([]);
-
-  const getPositions = async () => {
-    const response = await axios.get(`${API_BASE}/api/v1/positions`);
-    setPositions(response.data.positions);
-  };
-
-  useEffect(() => {
-    getPositions();
-  }, []);
+  const [formSuccess, setFormSuccess] = useState(false);
 
   return (
     <section id="postRoute" className="post-block">
       <div className="post-block__heading">
-        <Heading>Working with POST request</Heading>
+        <Heading>
+          {!formSuccess ? "Working with POST request" : "Congrats!!!"}
+        </Heading>
       </div>
-      <Form positions={positions} />
+      {!formSuccess ? (
+        <Form setFormSuccess={setFormSuccess} />
+      ) : (
+        <div className="img-container">
+          <img src={succesImage} alt="Successfull registration" />
+        </div>
+      )}
     </section>
   );
 };

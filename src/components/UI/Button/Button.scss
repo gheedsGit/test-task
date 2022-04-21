@@ -7,6 +7,7 @@
   background-color: $buttonColorNormal;
   font-size: $fontSizeBody;
   line-height: $lineHeightBody;
+  cursor: pointer;
 
   &:hover {
     background-color: $buttonColorHover;
@@ -15,5 +16,6 @@
   &:disabled {
     background-color: $buttonColorDisabled;
     color: $backgroundColorSurface;
+    cursor: default;
   }
 }

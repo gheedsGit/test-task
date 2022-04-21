@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { API_BASE, OFFSET } from "../../apiQueryData";
+import { API_BASE } from "../../apiQueryData";
 import UserList from "./UserList/UserList";
 import ShowMoreButton from "./ShowMoreButton";
 import "./GetBlock.scss";
 import Heading from "../UI/Typography/Heading";
+import OffsetContext from "../../context";
 
 const GetBlock = () => {
   const [userData, setUserData] = useState([]);
@@ -12,18 +13,21 @@ const GetBlock = () => {
   const [totalPages, setTotalPages] = useState(2);
   const [isHiding, setIsHiding] = useState(false);
 
+  const { offset, setOffset } = useContext(OffsetContext);
+
   const timestampCompare = (prevUser, nextUser) => {
-    return prevUser.registration_timestamp - nextUser.registration_timestamp;
+    return nextUser.registration_timestamp - prevUser.registration_timestamp;
   };
 
   const showMoreUsers = () => {
-    setCurrentPage(currentPage + 1);
+    //setCurrentPage(currentPage + 1); For one page view use current page accumulator instead of offset
+    setOffset(offset + 6);
   };
 
   const getUserData = async () => {
     try {
       const response = await axios.get(
-        API_BASE + `/api/v1/users?page=${currentPage}&count=${OFFSET}`
+        API_BASE + `/api/v1/users?page=${currentPage}&count=${offset}`
       );
       const { users, total_pages } = response.data;
       setUserData(users.sort(timestampCompare));
@@ -38,10 +42,11 @@ const GetBlock = () => {
       setIsHiding(true);
     }
   };
+
   useEffect(() => {
     getUserData();
     checkButtonVisibility();
-  }, [userData, currentPage]);
+  }, [userData]);
 
   return (
     <div id="getRoute" className="get-block">

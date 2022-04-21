@@ -1,11 +1,26 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./Form.scss";
 import { validationSchema } from "./validator";
 import { useFormik } from "formik";
 import Button from "../../UI/Button";
 import Body from "../../UI/Typography/Body";
+import axios from "axios";
+import OffsetContext from "../../../context";
+import { API_POST_BASE, API_POST_TOKEN, API_BASE } from "../../../apiQueryData";
 
-const Form = ({ positions }) => {
+const Form = ({ setFormSuccess }) => {
+  const [positions, setPositions] = useState([]);
+  const { setOffset } = useContext(OffsetContext);
+
+  const getPositions = async () => {
+    const response = await axios.get(`${API_BASE}/api/v1/positions`);
+    setPositions(response.data.positions);
+  };
+
+  useEffect(() => {
+    getPositions();
+  }, []);
+
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -15,8 +30,34 @@ const Form = ({ positions }) => {
       photo: "",
     },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: async (values) => {
+      try {
+        const resToken = await axios.get(API_POST_TOKEN);
+        const token = resToken.data.token;
+        const formData = new FormData();
+
+        formData.append("name", values.name);
+        formData.append("email", values.email);
+        formData.append("phone", values.phone);
+        formData.append("position_id", values.position_id);
+        formData.append("photo", values.photo);
+
+        if (token) {
+          const res = await axios.post(API_POST_BASE, formData, {
+            headers: {
+              Token: token,
+              "Content-Type": "multipart/form-data",
+            },
+          });
+
+          if (res.data.success) {
+            setFormSuccess(res.data.success);
+            setOffset(6);
+          }
+        }
+      } catch (error) {
+        console.log(error);
+      }
     },
   });
 
