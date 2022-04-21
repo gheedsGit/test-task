@@ -84,6 +84,7 @@ const Form = ({ setFormSuccess }) => {
               Your name
             </label>
             <input
+              id="name"
               name="name"
               type="text"
               onChange={formik.handleChange}
@@ -99,6 +100,7 @@ const Form = ({ setFormSuccess }) => {
               Email
             </label>
             <input
+              id="email"
               name="email"
               type="email"
               onChange={formik.handleChange}
@@ -114,6 +116,7 @@ const Form = ({ setFormSuccess }) => {
               Phone
             </label>
             <input
+              id="phone"
               name="phone"
               type="text"
               onChange={formik.handleChange}
@@ -134,6 +137,7 @@ const Form = ({ setFormSuccess }) => {
               {positions.map((position) => (
                 <div className="radio-item" key={position.id}>
                   <input
+                    id={position.name}
                     type="radio"
                     value={position.id}
                     onChange={formik.handleChange}
