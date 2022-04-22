@@ -85,13 +85,27 @@ input[type="email"] {
 .input-label {
   position: absolute;
   z-index: 1;
-  margin-top: -9px;
+  margin-top: 16px;
   margin-left: 16px;
   color: $inputLabel;
   padding: 2px 4px;
   transition: 0.2s;
   pointer-events: none;
   background-color: $backgroundColorMain;
+}
+
+.input-wrapper:focus-within .input-label,
+.input-label.filled {
+  margin-top: -8px;
+  position: absolute;
+  z-index: 1;
+  margin-left: 16px;
+  padding: 2px 4px;
+  color: $inputLabel;
+  background: $backgroundColorMain;
+  transition: 0.2s;
+  font-size: 12px;
+  line-height: 14px;
 }
 
 .radio-item {

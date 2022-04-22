@@ -13,7 +13,9 @@ const PostBlock = () => {
     <section id="postRoute" className="post-block">
       <div className="post-block__heading">
         <Heading>
-          {!formSuccess ? "Working with POST request" : "Congrats!!!"}
+          {!formSuccess
+            ? "Working with POST request"
+            : "User successfully registered"}
         </Heading>
       </div>
       {!formSuccess ? (

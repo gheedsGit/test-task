@@ -80,7 +80,12 @@ const Form = ({ setFormSuccess }) => {
       <form className="form" onSubmit={formik.handleSubmit}>
         <div className="form-item">
           <div className="form-item__name input-wrapper">
-            <label className="input-label" htmlFor="name">
+            <label
+              className={
+                formik.values.name !== "" ? "input-label filled" : "input-label"
+              }
+              htmlFor="name"
+            >
               Your name
             </label>
             <input
@@ -96,7 +101,14 @@ const Form = ({ setFormSuccess }) => {
             ) : null}
           </div>
           <div className="form-item__email input-wrapper">
-            <label className="input-label" htmlFor="email">
+            <label
+              className={
+                formik.values.email !== ""
+                  ? "input-label filled"
+                  : "input-label"
+              }
+              htmlFor="email"
+            >
               Email
             </label>
             <input
@@ -112,7 +124,14 @@ const Form = ({ setFormSuccess }) => {
             ) : null}
           </div>
           <div className="form-item__phone input-wrapper">
-            <label className="input-label" htmlFor="phone">
+            <label
+              className={
+                formik.values.phone !== ""
+                  ? "input-label filled"
+                  : "input-label"
+              }
+              htmlFor="phone"
+            >
               Phone
             </label>
             <input
